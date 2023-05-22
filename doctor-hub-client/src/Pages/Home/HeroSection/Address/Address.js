@@ -2,6 +2,7 @@ import React from "react";
 import { MdLocationPin } from "react-icons/md";
 import { FiPhoneCall } from "react-icons/fi";
 import { GiAlarmClock } from "react-icons/gi";
+import AddressCard from "./AddressCard";
 
 const locationData = [
     {
@@ -15,6 +16,9 @@ const locationData = [
         icon: <MdLocationPin />,
         title: "Visit Our Location",
         description: "Bogura, 123-road, Colony",
+        cssProperties: {
+            backgroundColor: "bg-gray-700",
+        },
     },
     {
         id: 3,
@@ -28,16 +32,7 @@ const Address = () => {
     return (
         <div className="md:grid grid-cols-3 gap-12 mt-16 mb-16 text-white">
             {locationData.map((info) => (
-                <div
-                    key={info.id}
-                    className="flex justify-center items-center bg-gradient shadow-2xl mt-10 rounded-xl py-5 px-4"
-                >
-                    <p className="text-5xl mr-3">{info.icon}</p>
-                    <div>
-                        <h1 className="text-xl font-bold">{info.title}</h1>
-                        <p>{info.description}</p>
-                    </div>
-                </div>
+               <AddressCard key={info.id} info={info}/>
             ))}
         </div>
     );
