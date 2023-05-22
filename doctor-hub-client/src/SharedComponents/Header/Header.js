@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineManageAccounts } from "react-icons/md";
-import "./Header.css";
 
 const Header = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 mt-5">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="lg:hidden">
@@ -71,7 +70,9 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/" className="text-gradient">Sign Up</Link>
+                <Link to="/" className="text-gradient">
+                    Sign Up
+                </Link>
                 <MdOutlineManageAccounts className=" ml-3 text-4xl font-bold text-gradient" />
             </div>
         </div>
