@@ -20,6 +20,10 @@ const serviceData = [
         specialty: "Dermatologist",
         description:
             "A dermatologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the skin, hair, and nails.",
+        cssProperty: {
+            backgroundColor: "bg-gray-700",
+            color: "text-slate-50",
+        },
     },
     {
         id: 3,
@@ -41,6 +45,10 @@ const serviceData = [
         specialty: "Neurologist",
         description:
             "A neurologist is a doctor who specializes in diagnosing and treating diseases and conditions of the brain, spinal cord, and nervous system.",
+        cssProperty: {
+            backgroundColor: "bg-gray-700",
+            color: "text-white",
+        },
     },
 ];
 
