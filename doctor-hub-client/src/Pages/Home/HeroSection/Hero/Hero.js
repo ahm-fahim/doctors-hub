@@ -1,5 +1,5 @@
 import React from "react";
-import cover from "../../../assets/images/img.png";
+import cover from "../../../../assets/images/img.png";
 
 const Hero = () => {
     return (
