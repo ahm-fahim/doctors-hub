@@ -3,3 +3,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.text-hover{
+  transition: 5s;
+}
+.text-hover:hover{
+   background: -webkit-linear-gradient(#34d399,#0ea5e9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

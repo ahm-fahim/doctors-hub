@@ -28,19 +28,19 @@ const Header = () => {
                         tabIndex={0}
                         className="menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                     >
-                        <li className="hover:text-emerald-500 mt-4">
+                        <li className="text-hover mt-4">
                             <Link to="/">Home</Link>
                         </li>
-                        <li className="hover:text-emerald-500 mt-4">
+                        <li className="text-hover mt-4">
                             <Link to="/">About 3</Link>
                         </li>
-                        <li className="hover:text-emerald-500 mt-4">
+                        <li className="text-hover mt-4">
                             <Link to="/">Appointment</Link>
                         </li>
-                        <li className="hover:text-emerald-500 mt-4">
+                        <li className="text-hover mt-4">
                             <Link to="/">Review</Link>
                         </li>
-                        <li className="hover:text-emerald-500 mt-4">
+                        <li className="text-hover mt-4">
                             <Link to="/">Contact Us</Link>
                         </li>
                     </ul>
@@ -53,25 +53,25 @@ const Header = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu-horizontal px-1">
-                    <li className="px-2 hover:text-emerald-500">
+                    <li className="px-2 text-hover">
                         <Link to="/">Home</Link>
                     </li>
-                    <li className="px-2 hover:text-emerald-500">
+                    <li className="px-2 text-hover">
                         <Link to="/">About</Link>
                     </li>
-                    <li className="px-2 hover:text-emerald-500">
+                    <li className="px-2 text-hover">
                         <Link to="/">Appointment</Link>
                     </li>
-                    <li className="px-2 hover:text-emerald-500">
+                    <li className="px-2 text-hover">
                         <Link to="/">Review</Link>
                     </li>
-                    <li className="px-2 hover:text-emerald-500">
+                    <li className="px-2 text-hover">
                         <Link to="/">Contact Us</Link>
                     </li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/">Login</Link>
+                <Link to="/" className="text-gradient">Sign Up</Link>
                 <MdOutlineManageAccounts className=" ml-3 text-4xl font-bold text-gradient" />
             </div>
         </div>
