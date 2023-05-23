@@ -3,6 +3,25 @@ import { Link } from "react-router-dom";
 import { MdOutlineManageAccounts } from "react-icons/md";
 
 const Header = () => {
+    const menuItem = (
+        <>
+            <li className="text-hover mt-5 lg:mt-0 px-2">
+                <Link to="/">Home</Link>
+            </li>
+            <li className="text-hover mt-5 lg:mt-0 px-2">
+                <Link to="/">About </Link>
+            </li>
+            <li className="text-hover mt-5 lg:mt-0 px-2">
+                <Link to="/appointment">Appointment</Link>
+            </li>
+            <li className="text-hover mt-5 lg:mt-0 px-2">
+                <Link to="/">Review</Link>
+            </li>
+            <li className="text-hover mt-5 lg:mt-0 px-2">
+                <Link to="/">Contact Us</Link>
+            </li>
+        </>
+    );
     return (
         <div className="navbar bg-base-100 mt-5">
             <div className="navbar-start">
@@ -27,21 +46,7 @@ const Header = () => {
                         tabIndex={0}
                         className="menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                     >
-                        <li className="text-hover mt-4">
-                            <Link to="/">Home</Link>
-                        </li>
-                        <li className="text-hover mt-4">
-                            <Link to="/">About 3</Link>
-                        </li>
-                        <li className="text-hover mt-4">
-                            <Link to="/">Appointment</Link>
-                        </li>
-                        <li className="text-hover mt-4">
-                            <Link to="/">Review</Link>
-                        </li>
-                        <li className="text-hover mt-4">
-                            <Link to="/">Contact Us</Link>
-                        </li>
+                        {menuItem}
                     </ul>
                 </div>
                 <Link className="normal-case text-xl">
@@ -52,21 +57,7 @@ const Header = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu-horizontal px-1">
-                    <li className="px-2 text-hover">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="px-2 text-hover">
-                        <Link to="/">About</Link>
-                    </li>
-                    <li className="px-2 text-hover">
-                        <Link to="/">Appointment</Link>
-                    </li>
-                    <li className="px-2 text-hover">
-                        <Link to="/">Review</Link>
-                    </li>
-                    <li className="px-2 text-hover">
-                        <Link to="/">Contact Us</Link>
-                    </li>
+                    {menuItem}
                 </ul>
             </div>
             <div className="navbar-end">

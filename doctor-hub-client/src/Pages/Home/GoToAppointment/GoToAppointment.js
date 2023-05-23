@@ -30,7 +30,7 @@ const GoToAppointment = () => {
                         assumenda excepturi exercitationem quasi. In deleniti
                         eaque aut repudiandae et a id nisi.
                     </p>
-                    <Link to="/" className="btn bg-gradient border-none">
+                    <Link to="/appointment" className="btn bg-gradient border-none">
                         Get Appointment
                     </Link>
                 </div>
