@@ -10,6 +10,7 @@ const serviceData = [
     {
         id: 1,
         img: img1,
+        name: "Dr. Jarin Tasnim",
         specialty: "Cardiologist",
         description:
             "A cardiologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the heart and blood vessels.",
@@ -17,6 +18,7 @@ const serviceData = [
     {
         id: 2,
         img: img2,
+        name: "Dr. Jaisy",
         specialty: "Dermatologist",
         description:
             "A dermatologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the skin, hair, and nails.",
@@ -28,6 +30,7 @@ const serviceData = [
     {
         id: 3,
         img: img3,
+        name: "Dr. Putinho",
         specialty: "Pediatrician",
         description:
             "A pediatrician is a doctor who specializes in the medical care of infants, children, and adolescents.",
@@ -35,6 +38,7 @@ const serviceData = [
     {
         id: 4,
         img: img4,
+        name: "Dr. Jara",
         specialty: "Orthopedic Surgeon",
         description:
             "An orthopedic surgeon is a doctor who specializes in diagnosing and treating diseases and injuries of the musculoskeletal system, including bones, joints, ligaments, tendons, and muscles.",
@@ -42,6 +46,7 @@ const serviceData = [
     {
         id: 5,
         img: img5,
+        name: "Dr. Daisy",
         specialty: "Neurologist",
         description:
             "A neurologist is a doctor who specializes in diagnosing and treating diseases and conditions of the brain, spinal cord, and nervous system.",
