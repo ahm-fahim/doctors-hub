@@ -3,7 +3,7 @@ import cover from "../../../../assets/images/img.png";
 
 const Hero = () => {
     return (
-        <div className="hero min-h-96 mt-16 mb-16">
+        <div className="hero min-h-96 my-16">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <img
                     src={cover}

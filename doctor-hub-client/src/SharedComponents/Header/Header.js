@@ -61,7 +61,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/" className="text-gradient">
+                <Link to="/signup" className="text-gradient">
                     Sign Up
                 </Link>
                 <MdOutlineManageAccounts className=" ml-3 text-4xl font-bold text-gradient" />
