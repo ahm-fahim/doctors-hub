@@ -10,17 +10,17 @@ const Footer = () => {
     };
     return (
         <div
-            className="bg-cover bg-no-repeat h-96 text-white md:grid grid-cols-3 gap-5 justify-items-center items-end p-5 md:p-10"
+            className="bg-cover bg-no-repeat h-full md:h-96 text-white md:grid grid-cols-3 gap-5 justify-items-center items-end p-5 md:p-10"
             style={footerBg}
         >
             <div className="mt-10">
                 <span className="text-xl flex items-center font-bold">
                     <AiOutlineBranches className="mr-2" /> Our Branch
                 </span>
-                <p className="text-gradient font-bold">Bogura</p>
-                <p className="text-gradient font-bold">Dhaka</p>
-                <p className="text-gradient font-bold">Rajshahi</p>
-                <p className="text-gradient font-bold">Dinazpur</p>
+                <p className="text-gradient font-bold">Bogura, Colony.</p>
+                <p className="text-gradient font-bold">Dhaka, 123-road Mirpur.</p>
+                <p className="text-gradient font-bold">Rajshahi, 301-Colony.</p>
+                <p className="text-gradient font-bold">Dinazpur, Ruppur-324.</p>
             </div>
             <div className="mt-10">
                 <span className="text-xl flex items-center font-bold">
