@@ -41,22 +41,22 @@ const DoctorsDetails = ({ info }) => {
             <Modal className="lg:p-10" isOpen={isOpen} onClose={closeModal}>
                 <img src={image} alt="" className="h-40" />
                 <h1 className="text-2xl text-gradient font-bold mt-5">{name}</h1>
-                <h2 className="text-xl font-bold mt-3">
+                <h2 className="text-lg mt-3">
                     {" "}
                     <span className="font-bold">Specialty - </span> {specialty}
                 </h2>
-                <h3 className="text-lg font-bold text-gray-500 mt-5">
+                <h3 className="text-xs text-gradient mt-">{experience}</h3>
+                <h3 className="text-lg mt-2">
                     <span className="font-bold">Education - </span>
                     {education}
                 </h3>
-                <h3 className="text-md text-gray-500 mt-5">{experience}</h3>
-                <h4 className="text-md mt-5">
+                <h4 className="text-md mt-2">
                     <span className="font-bold">Hospital - </span>
                     {hospital}
                 </h4>
-                <p className="text-sm text-gray-500 mt-5">
+                <p className="text-sm text-gray-500 mt-2">
                     {" "}
-                    <span className="font-bold">Description - </span>{" "}
+                    <span className="font-bold text-black">Description - </span>{" "}
                     {description}
                 </p>
             </Modal>

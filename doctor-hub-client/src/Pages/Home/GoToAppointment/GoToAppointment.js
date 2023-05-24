@@ -6,7 +6,7 @@ import img3 from "../../../assets/images/img12.png";
 
 const GoToAppointment = () => {
     return (
-        <div className="hero mt-24">
+        <div className="hero mt-16">
             <div className="hero-content flex-col lg:flex-row">
                 <div className="relative ">
                     <div className="absolute top-24 left-16 animate-pulse">
