@@ -18,6 +18,8 @@ const serviceData = [
         description:
             "A cardiologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the heart and blood vessels.",
         image: img1,
+        bgClass: "bg-white",
+        color: "text-black",
     },
     {
         id: 2,
@@ -29,6 +31,8 @@ const serviceData = [
         description:
             "A dermatologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the skin, hair, and nails.",
         image: img2,
+        bgClass: "bg-gray-700",
+        color: "text-white",
     },
     {
         id: 3,
@@ -40,6 +44,8 @@ const serviceData = [
         description:
             "A pediatrician is a doctor who specializes in the medical care of infants, children, and adolescents.",
         image: img3,
+        bgClass: "bg-white",
+        color: "text-black",
     },
     {
         id: 4,
@@ -51,6 +57,8 @@ const serviceData = [
         description:
             "An orthopedic surgeon is a doctor who specializes in diagnosing and treating diseases and injuries of the musculoskeletal system, including bones, joints, ligaments, tendons, and muscles.",
         image: img4,
+        bgClass: "bg-white",
+        color: "text-black",
     },
     {
         id: 5,
@@ -62,6 +70,8 @@ const serviceData = [
         description:
             "A neurologist is a doctor who specializes in diagnosing and treating diseases and conditions of the brain, spinal cord, and nervous system.",
         image: img5,
+        bgClass: "bg-gray-700",
+        color: "text-white",
     },
     {
         id: 6,
@@ -73,6 +83,8 @@ const serviceData = [
         description:
             "A gynecologist is a doctor who specializes in women's reproductive health, including pregnancy, childbirth, and disorders of the reproductive system.",
         image: img6,
+        bgClass: "bg-white",
+        color: "text-black",
     },
 ];
 
