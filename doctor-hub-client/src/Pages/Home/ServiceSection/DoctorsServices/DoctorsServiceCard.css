@@ -1,0 +1,7 @@
+.hiddenDiv{
+    display: none;
+}
+
+.visibleDiv:hover .hiddenDiv{
+    display: block;
+}
