@@ -3,6 +3,7 @@ import img from "../../../assets/images/img10.png";
 import { Link } from "react-router-dom";
 import img2 from "../../../assets/images/img.png";
 import img3 from "../../../assets/images/img12.png";
+import PrimaryButton from "../../../components/PrimaryButton/PrimaryButton";
 
 const GoToAppointment = () => {
     return (
@@ -32,12 +33,9 @@ const GoToAppointment = () => {
                             fugiat ut assumenda excepturi exercitationem quasi.
                             In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <Link
-                            to="/appointment"
-                            className="btn bg-gradient border-none"
-                        >
+                        <PrimaryButton path="/appointment">
                             Get Appointment
-                        </Link>
+                        </PrimaryButton>
                     </div>
                     <img
                         src={img3}

@@ -20,9 +20,16 @@ const Sidebar = () => {
         },
     ];
     return (
-        <div className="flex flex-col h-screen bg-gradient ">
+        <div className="flex flex-col h-screen bg-gradient">
+            <Link to="/" className="text-2xl font-bold text-white p-2">
+                Doctors Hub
+            </Link>
             {link.map((info) => (
-                <Link className="hover:bg-white p-2" key={info.id} to={`${info.to}`}>
+                <Link
+                    className="hover:bg-white p-2"
+                    key={info.id}
+                    to={`${info.to}`}
+                >
                     {info.name}
                 </Link>
             ))}

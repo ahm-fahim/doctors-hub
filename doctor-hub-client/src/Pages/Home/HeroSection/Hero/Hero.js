@@ -2,6 +2,7 @@ import React from "react";
 import cover from "../../../../assets/images/img.png";
 import coverBg from "../../../../assets/images/img11.png";
 import { Link } from "react-router-dom";
+import PrimaryButton from "../../../../components/PrimaryButton/PrimaryButton";
 
 const Hero = () => {
     return (
@@ -24,12 +25,9 @@ const Hero = () => {
                             <br /> In deleniti eaque aut repudiandae et a id
                             nisi.
                         </p>
-                        <Link
-                            to="/appointment"
-                            className="btn bg-gradient border-none shadow-2xl"
-                        >
+                        <PrimaryButton path="/appointment">
                             Get Started
-                        </Link>
+                        </PrimaryButton>
                     </div>
                     <img src={coverBg} className="opacity-10 z-10" alt="" />
                 </div>
