@@ -1,13 +1,13 @@
 import React from "react";
-import Hero from "../HeroSection/Hero/Hero";
 import Address from "../HeroSection/Address/Address";
 import Service from "../ServiceSection/Service/Service";
 import GoToAppointment from "../GoToAppointment/GoToAppointment";
+import HomeBanner from "../HeroSection/HomeBanner/HomeBanner";
 
 const Home = () => {
     return (
         <div>
-            <Hero />
+            <HomeBanner />
             <Address />
             <Service />
             <GoToAppointment />

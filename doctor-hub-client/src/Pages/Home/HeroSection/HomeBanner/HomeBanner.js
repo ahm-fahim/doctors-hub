@@ -1,12 +1,11 @@
 import React from "react";
 import cover from "../../../../assets/images/img.png";
 import coverBg from "../../../../assets/images/img11.png";
-import { Link } from "react-router-dom";
 import PrimaryButton from "../../../../components/PrimaryButton/PrimaryButton";
 
-const Hero = () => {
+const HomeBanner = () => {
     return (
-        <div className="hero min-h-96 my-16 ">
+        <div className="hero min-h-96 my-2 ">
             <div className="hero-content flex-col lg:flex-row-reverse ">
                 <img
                     src={cover}
@@ -36,4 +35,4 @@ const Hero = () => {
     );
 };
 
-export default Hero;
+export default HomeBanner;
