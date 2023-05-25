@@ -9,16 +9,19 @@ const Header = () => {
                 <Link to="/">Home</Link>
             </li>
             <li className="text-hover mt-5 lg:mt-0 px-2">
-                <Link to="/">About </Link>
+                <Link to="/appointment">Appointment</Link>
             </li>
             <li className="text-hover mt-5 lg:mt-0 px-2">
-                <Link to="/appointment">Appointment</Link>
+                <Link to="/">Serials Go</Link>
+            </li>
+            <li className="text-hover mt-5 lg:mt-0 px-2">
+                <Link to="/">About </Link>
             </li>
             <li className="text-hover mt-5 lg:mt-0 px-2">
                 <Link to="/">Review</Link>
             </li>
             <li className="text-hover mt-5 lg:mt-0 px-2">
-                <Link to="/">Contact Us</Link>
+                <Link to="/dashboard">Dashboard</Link>
             </li>
         </>
     );
@@ -56,9 +59,7 @@ const Header = () => {
                 </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu-horizontal px-1">
-                    {menuItem}
-                </ul>
+                <ul className="menu-horizontal px-1">{menuItem}</ul>
             </div>
             <div className="navbar-end">
                 <Link to="/signup" className="text-gradient">
