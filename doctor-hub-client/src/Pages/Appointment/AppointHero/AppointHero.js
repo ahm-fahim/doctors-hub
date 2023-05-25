@@ -5,11 +5,16 @@ import "./AppointHero.css";
 
 const AppointHero = () => {
     const [selectedDate, setSelectedDate] = useState(new Date());
-
+    let todayDate = " Please Pick The Date ";
+    if (selectedDate) {
+        todayDate = (
+            <span className="text-2xl ml-3">{format(selectedDate, "PP")}</span>
+        );
+    }
     return (
         <div>
             <div className="hero my-16">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="hero-content flex-col-reverse lg:flex-row-reverse">
                     <DayPicker
                         className="shadow-lg rounded-xl p-5"
                         mode="single"
@@ -35,11 +40,8 @@ const AppointHero = () => {
                 </div>
             </div>
             <h1 className="text-gradient font-bold flex items-center justify-center">
-                Available Service On{" "}
-                <span className="text-2xl ml-3">
-                    {" "}
-                    {format(selectedDate, "PP")}
-                </span>
+                Available Service On
+                {todayDate}
             </h1>
         </div>
     );

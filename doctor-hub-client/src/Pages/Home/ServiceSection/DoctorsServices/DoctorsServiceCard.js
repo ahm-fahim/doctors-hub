@@ -10,9 +10,6 @@ const DoctorsServiceCard = ({ category }) => {
         bgClass,
         color,
         name,
-        education,
-        experience,
-        hospital,
     } = category;
     return (
         <div className="relative visibleDiv">
