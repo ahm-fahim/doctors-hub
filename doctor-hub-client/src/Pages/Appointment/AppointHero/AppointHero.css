@@ -1,0 +1,14 @@
+ .my-selected:not([disabled]) { 
+    font-weight: bold; 
+    border: 2px solid #34d399;
+    color:#34d399
+  }
+  .my-selected:hover:not([disabled]) { 
+    border-color: #01c980;
+    color: #01c980;
+  }
+  .my-today { 
+    font-weight: bold;
+    font-size: 140%; 
+    color:#34d399;
+  }
