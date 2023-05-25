@@ -4,11 +4,11 @@ const AddressCard = ({ info }) => {
     const { icon, title, description, cssProperties } = info;
     return (
         <div
-            className={`flex justify-center items-center shadow-2xl mt-10 rounded-xl py-5 px-4 ${
+            className={`lg:flex justify-center items-center shadow-2xl mt-10 rounded-xl py-5 px-4 ${
                 cssProperties ? cssProperties.backgroundColor : "bg-gradient"
             } `}
         >
-            <p className="text-5xl mr-3">{icon}</p>
+            <p className="text-5xl">{icon}</p>
             <div>
                 <h1 className="text-xl font-bold">{title}</h1>
                 <p>{description}</p>

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineManageAccounts } from "react-icons/md";
 
-const Header = () => {
+const Navbar = () => {
     const menuItem = (
         <>
             <li className="text-hover mt-5 lg:mt-0 px-2">
@@ -71,4 +71,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Navbar;

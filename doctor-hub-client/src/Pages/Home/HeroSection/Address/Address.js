@@ -30,7 +30,7 @@ const locationData = [
 
 const Address = () => {
     return (
-        <div className="md:grid grid-cols-3 gap-12 my-16 text-white">
+        <div className="md:grid grid-cols-3 gap-5 my-2 text-white">
             {locationData.map((info) => (
                <AddressCard key={info.id} info={info}/>
             ))}
