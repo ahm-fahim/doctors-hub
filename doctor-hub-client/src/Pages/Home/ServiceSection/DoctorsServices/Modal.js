@@ -3,7 +3,7 @@ import React from "react";
 const Modal = ({ isOpen, onClose, children }) => {
     // Hide or show the modal based on the isOpen prop
     const modalClasses = isOpen
-        ? "fixed inset-0 flex items-center justify-center z-50"
+        ? "fixed inset-0 flex items-end md:items-center justify-center z-50"
         : "hidden";
 
     return (
@@ -15,7 +15,7 @@ const Modal = ({ isOpen, onClose, children }) => {
             ></div>
 
             {/* Modal content */}
-            <div className="bg-white p-6 rounded-lg shadow-lg z-10">
+            <div className=" bg-white p-6 rounded-lg shadow-lg z-10">
                 {children}
             </div>
         </div>
