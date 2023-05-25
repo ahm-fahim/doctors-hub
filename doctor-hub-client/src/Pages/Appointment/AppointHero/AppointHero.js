@@ -1,16 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { DayPicker } from "react-day-picker";
-import { format } from "date-fns";
 import "./AppointHero.css";
 
-const AppointHero = () => {
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    let todayDate = " Please Pick The Date ";
-    if (selectedDate) {
-        todayDate = (
-            <span className="text-2xl ml-3">{format(selectedDate, "PP")}</span>
-        );
-    }
+const AppointHero = ({ selectedDate, setSelectedDate }) => {
     return (
         <div>
             <div className="hero my-16">
@@ -29,20 +21,15 @@ const AppointHero = () => {
                         }}
                     />
                     <div>
-                        <h1 className="text-5xl font-bold">Box Office News!</h1>
+                        <h1 className="text-5xl font-bold">Doctors Info</h1>
                         <p className="py-6">
                             Provident cupiditate voluptatem et in. Quaerat
                             fugiat ut assumenda excepturi exercitationem quasi.
                             In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>
             </div>
-            <h1 className="text-gradient font-bold flex items-center justify-center">
-                Available Service On
-                {todayDate}
-            </h1>
         </div>
     );
 };
