@@ -1,7 +1,25 @@
 import React, { useEffect, useState } from "react";
 import AvailableAppointmentCard from "./AvailableAppointmentCard";
+import Modal from "../../../SharedComponents/Modal/Modal";
+import AppointForm from "../AppointForm/AppointForm";
 
 const AvailableAppointments = ({ currentDate }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [appointInfo, setAppointInfo] = useState(null);
+
+    const appointFormInfo = (data) => {
+        setAppointInfo(data);
+        openModal();
+    };
+
+    const openModal = () => {
+        setIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+
     const [schedule, setSchedule] = useState([]);
 
     useEffect(() => {
@@ -9,7 +27,6 @@ const AvailableAppointments = ({ currentDate }) => {
             .then((res) => res.json())
             .then((data) => {
                 setSchedule(data.schedule);
-                console.log(data.schedule);
             });
     }, []);
 
@@ -24,10 +41,15 @@ const AvailableAppointments = ({ currentDate }) => {
                     <AvailableAppointmentCard
                         key={info.id}
                         info={info}
-                        currentDate={currentDate}
+                        appointFormInfo={appointFormInfo}
                     />
                 ))}
             </div>
+            {appointInfo && (
+                <Modal className="lg:p-16" isOpen={isOpen} onClose={closeModal}>
+                    <AppointForm currentDate={currentDate} info={appointInfo} />
+                </Modal>
+            )}
         </div>
     );
 };

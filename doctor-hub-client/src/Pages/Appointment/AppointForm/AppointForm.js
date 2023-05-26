@@ -3,6 +3,7 @@ import PrimaryButton from "../../../components/PrimaryButton/PrimaryButton";
 
 const AppointForm = ({ currentDate, info }) => {
     const { day, hours } = info;
+    console.log("Hours", hours[0].start);
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -16,7 +17,7 @@ const AppointForm = ({ currentDate, info }) => {
                         />
                         <input
                             type="text"
-                            value={`${day}, ${hours[0].start} - ${hours[0].end}`}
+                            value={`${day}, ${hours[0].start} - ${hours[0].end} `}
                             readOnly
                             className="outline-none text-gradient font-bold form-control"
                         />
