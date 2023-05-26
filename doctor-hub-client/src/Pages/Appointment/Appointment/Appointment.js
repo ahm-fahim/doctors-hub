@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import AppointHero from "../AppointHero/AppointHero";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
 import { format } from "date-fns";
+import { useParams } from "react-router-dom";
 
 const Appointment = () => {
+    const { id } = useParams();
+    console.log("appointment page", id);
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     let todayDate = " Please Pick The Date ";

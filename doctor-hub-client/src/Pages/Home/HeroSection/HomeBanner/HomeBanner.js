@@ -24,7 +24,7 @@ const HomeBanner = () => {
                             <br /> In deleniti eaque aut repudiandae et a id
                             nisi.
                         </p>
-                        <PrimaryButton path="/appointment">
+                        <PrimaryButton path="">
                             Get Started
                         </PrimaryButton>
                     </div>

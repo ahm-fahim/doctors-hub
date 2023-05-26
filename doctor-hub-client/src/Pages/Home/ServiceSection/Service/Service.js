@@ -1,6 +1,5 @@
 import React from "react";
 import DoctorsServices from "../DoctorsServices/DoctorsServices";
-import TechnicalServices from "../TechnicalServices/TechnicalServices/TechnicalServices";
 
 const Service = () => {
     return (
@@ -12,7 +11,6 @@ const Service = () => {
                 <h1 className="text-2xl font-bold">Services We Provide</h1>
             </div>
             <DoctorsServices />
-            <TechnicalServices />
         </div>
     );
 };

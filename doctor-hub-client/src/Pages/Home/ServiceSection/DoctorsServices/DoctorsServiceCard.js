@@ -2,15 +2,8 @@ import React from "react";
 import "./DoctorsServiceCard.css";
 import DoctorsDetails from "./DoctorsDetails";
 
-const DoctorsServiceCard = ({ category }) => {
-    const {
-        specialty,
-        description,
-        image,
-        bgClass,
-        color,
-        name,
-    } = category;
+const DoctorsServiceCard = ({ info }) => {
+    const { specialty, description, image, bgClass, color, name } = info;
     return (
         <div className="relative visibleDiv">
             <div
@@ -24,7 +17,7 @@ const DoctorsServiceCard = ({ category }) => {
                 <p className={`${color} `}>{description}</p>
             </div>
             <div className="hiddenDiv">
-                <DoctorsDetails info={category} />
+                <DoctorsDetails info={info} />
             </div>
         </div>
     );

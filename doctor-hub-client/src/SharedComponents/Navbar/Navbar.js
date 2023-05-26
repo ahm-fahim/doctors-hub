@@ -9,9 +9,6 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
             </li>
             <li className="text-hover mt-5 lg:mt-0 px-2">
-                <Link to="/appointment">Appointment</Link>
-            </li>
-            <li className="text-hover mt-5 lg:mt-0 px-2">
                 <Link to="/">Serials Go</Link>
             </li>
             <li className="text-hover mt-5 lg:mt-0 px-2">

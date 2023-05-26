@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Modal from "./Modal";
+import Modal from "../../../../SharedComponents/Modal/Modal";
 
 const DoctorsDetails = ({ info }) => {
     const {
+        id,
         specialty,
         description,
         image,
@@ -32,7 +33,7 @@ const DoctorsDetails = ({ info }) => {
                 Details
             </Link>
             <Link
-                to=""
+                to={`/appointment/${id}`}
                 className="btn border-none w-1/3 shadow-2xl bg-gradient"
             >
                 Get Appoint

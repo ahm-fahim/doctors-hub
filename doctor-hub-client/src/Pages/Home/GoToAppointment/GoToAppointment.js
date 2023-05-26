@@ -33,9 +33,7 @@ const GoToAppointment = () => {
                             fugiat ut assumenda excepturi exercitationem quasi.
                             In deleniti eaque aut repudiandae et a id nisi.
                         </p>
-                        <PrimaryButton path="/appointment">
-                            Get Appointment
-                        </PrimaryButton>
+                        <PrimaryButton path="">Get Appointment</PrimaryButton>
                     </div>
                     <img
                         src={img3}
