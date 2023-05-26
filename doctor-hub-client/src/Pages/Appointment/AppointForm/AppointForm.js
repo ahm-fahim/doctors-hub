@@ -16,7 +16,7 @@ const AppointForm = ({ currentDate, info }) => {
                         />
                         <input
                             type="text"
-                            value={`${day}, ${hours[0].start}`}
+                            value={`${day}, ${hours[0].start} - ${hours[0].end}`}
                             readOnly
                             className="outline-none text-gradient font-bold form-control"
                         />
