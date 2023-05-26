@@ -9,9 +9,9 @@ const Appointment = () => {
     console.log("appointment page", id);
     const [selectedDate, setSelectedDate] = useState(new Date());
 
-    let todayDate = " Please Pick The Date ";
+    let currentDate = " Please Pick The Date ";
     if (selectedDate) {
-        todayDate = (
+        currentDate = (
             <span className="text-2xl ml-3">{format(selectedDate, "PP")}</span>
         );
     }
@@ -21,7 +21,7 @@ const Appointment = () => {
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
             />
-            <AvailableAppointments todayDate={todayDate} />
+            <AvailableAppointments currentDate={currentDate} />
         </div>
     );
 };
