@@ -29,6 +29,9 @@ async function run() {
         const doctorsCollection = client
             .db("Doctors-Hub")
             .collection("doctors");
+        const bookingCollection = client
+            .db("Doctors-Hub")
+            .collection("bookings");
 
         // get all doctors data
         app.get("/doctors", async (req, res) => {
@@ -38,13 +41,29 @@ async function run() {
             res.send(doctors);
         });
 
-        //get single doctor data
+        // get single doctor data
         app.get("/doctors/:id", async (req, res) => {
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const doctor = await doctorsCollection.findOne(query);
             res.send(doctor);
         });
+
+        // set booking data
+        app.post("/bookings", async (req, res) => {
+            const bookings = req.body;
+            const result = await bookingCollection.insertOne(bookings);
+            res.send(result);
+        });
+
+        // get booking data
+        app.get("/bookings", async (req, res) => {
+            const query = {};
+            const cursor = bookingCollection.find(query);
+            const bookings = await cursor.toArray();
+            res.send(bookings);
+        });
+        
     } finally {
         // Ensures that the client will close when you finish/error
         // await client.close();

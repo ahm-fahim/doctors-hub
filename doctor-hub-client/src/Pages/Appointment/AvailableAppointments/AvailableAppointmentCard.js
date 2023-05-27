@@ -14,7 +14,10 @@ const AvailableAppointmentCard = ({ doctorInfo, appointFormInfo }) => {
                 {schedule && schedule.length}{" "}
                 {schedule && schedule.length > 1 ? "Spaces" : "Space"} Available
             </p>
-            <PrimaryButton operation={() => appointFormInfo(schedule)} path="">
+            <PrimaryButton
+                operation={() => appointFormInfo(schedule)}
+                disabled={schedule && schedule.length === 0}
+            >
                 Book Appointment
             </PrimaryButton>
         </div>
