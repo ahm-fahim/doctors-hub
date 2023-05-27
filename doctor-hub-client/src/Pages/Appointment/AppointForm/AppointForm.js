@@ -1,25 +1,37 @@
 import React from "react";
 import PrimaryButton from "../../../components/PrimaryButton/PrimaryButton";
 
-const AppointForm = ({ currentDate, info }) => {
-    const { day, hours } = info;
+const AppointForm = ({ doctorInfo, currentDate, appointInfo }) => {
+    const { name, specialty } = doctorInfo;
+
+    console.log("appoint Info", doctorInfo);
+
     return (
         <div className="hero">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="card flex-shrink-0 w-full max-w-sm">
-                    <div className="card-body">
+                    <form className="card-body">
+                        <div>
+                            <input
+                                type="text"
+                                value={`${name}`}
+                                readOnly
+                                className="outline-none  text-gradient text-xl font-bold"
+                            />
+                            <input
+                                type="text"
+                                value={`${specialty}`}
+                                readOnly
+                                className="outline-none text-xs font-bold text-gray-500"
+                            />
+                        </div>
                         <input
                             type="text"
                             value={currentDate.props.children}
                             readOnly
                             className="outline-none text-gradient font-bold form-control"
                         />
-                        <input
-                            type="text"
-                            value={`${day}, ${hours[0].start} - ${hours[0].end} `}
-                            readOnly
-                            className="outline-none text-gradient font-bold form-control"
-                        />
+
                         <input
                             type="text"
                             placeholder="Full Name"
@@ -48,9 +60,9 @@ const AppointForm = ({ currentDate, info }) => {
                         ></textarea>
 
                         <div className="form-control mt-6">
-                            <PrimaryButton>SUBMIT</PrimaryButton>
+                            <PrimaryButton type="submit">SUBMIT</PrimaryButton>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ import PrimaryButton from "../../../../components/PrimaryButton/PrimaryButton";
 
 const DoctorsDetails = ({ info }) => {
     const {
-        id,
+        _id,
         specialty,
         description,
         image,
@@ -34,7 +34,7 @@ const DoctorsDetails = ({ info }) => {
                 Details
             </Link>
         
-            <PrimaryButton path={`/appointment/${id}`}>Get Appoint</PrimaryButton>
+            <PrimaryButton path={`/appointment/${_id}`}>Get Appoint</PrimaryButton>
 
             <Modal className="lg:p-16" isOpen={isOpen} onClose={closeModal}>
                 <div>

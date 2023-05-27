@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppointHero from "../AppointHero/AppointHero";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
 import { format } from "date-fns";
@@ -6,9 +6,19 @@ import { useParams } from "react-router-dom";
 
 const Appointment = () => {
     const { id } = useParams();
-    console.log("appointment page", id);
+    const [doctorInfo, setDoctorInfo] = useState({});
     const [selectedDate, setSelectedDate] = useState(new Date());
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/doctors/${id}`)
+            .then((res) => res.json())
+            .then((data) => {
+                setDoctorInfo(data);
+            });
+    }, [id]);
+
+
+    // current date 
     let currentDate = " Please Pick The Date ";
     if (selectedDate) {
         currentDate = (
@@ -18,10 +28,15 @@ const Appointment = () => {
     return (
         <div>
             <AppointHero
+                doctorInfo={doctorInfo}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
             />
-            <AvailableAppointments currentDate={currentDate} />
+
+            <AvailableAppointments
+                doctorInfo={doctorInfo}
+                currentDate={currentDate}
+            />
         </div>
     );
 };

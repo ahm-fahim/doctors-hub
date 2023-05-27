@@ -1,155 +1,113 @@
- [
+[
     {
-      "id": 1,
       "name": "Dr. John Smith",
       "specialty": "Cardiologist",
       "education": "Medical School, ABC University",
       "experience": "10 years of experience",
       "hospital": "XYZ Medical Center",
       "description": "A cardiologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the heart and blood vessels.",
-      "image": "https://example.com/images/doctor1.jpg",
-      "schedule": {
-        "Saturday": "9:00 AM - 5:00 PM",
-        "Sunday": "Closed",
-        "Monday": "9:00 AM - 5:00 PM",
-        "Tuesday": "9:00 AM - 5:00 PM",
-        "Wednesday": "9:00 AM - 5:00 PM",
-        "Thursday": "9:00 AM - 5:00 PM",
-        "Friday": "9:00 AM - 5:00 PM"
-      }
+      "image": "https://www.demo.unitemplates.com/medico/images/hospital/doctor_001.jpg",
+      "schedule": [
+          "9:00 AM",
+          "9:30 AM",
+          "10:00 AM",
+          "10:30 AM",
+          "11:00 AM",
+          "11:30 AM",
+          "12:00 PM",
+          "12:30 PM",
+          "1:00 PM",
+          "1:30 PM",
+          "2:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "3:30 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
     },
     {
-      "id": 2,
+
       "name": "Dr. Emily Johnson",
       "specialty": "Dermatologist",
       "education": "Medical School, XYZ University",
       "experience": "8 years of experience",
       "hospital": "ABC Dermatology Clinic",
       "description": "A dermatologist is a doctor who specializes in diagnosing and treating diseases and conditions related to the skin, hair, and nails.",
-      "image": "https://example.com/images/doctor2.jpg",
-      "schedule": {
-        "Saturday": "10:00 AM - 6:00 PM",
-        "Sunday": "Closed",
-        "Monday": "9:00 AM - 5:00 PM",
-        "Tuesday": "9:00 AM - 5:00 PM",
-        "Wednesday": "9:00 AM - 5:00 PM",
-        "Thursday": "9:00 AM - 5:00 PM",
-        "Friday": "9:00 AM - 5:00 PM"
-      }
+      "image": "https://img.freepik.com/free-photo/confident-attractive-male-doctor-wearing-white-lab-coat-while-standing-with-arms-crossed-against-turquoise-background_662251-1654.jpg",
+     "schedule": [
+          "9:00 AM",
+          "9:30 AM",
+          "10:00 AM",
+          "10:30 AM",
+          "11:00 AM",
+          "11:30 AM",
+          "12:00 PM",
+          "12:30 PM",
+          "1:00 PM",
+          "1:30 PM",
+          "2:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "3:30 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
     },
     {
-      "id": 3,
-      "name": "Dr. Michael Davis",
+
+      "name": "Dr. Sarah Davis",
       "specialty": "Pediatrician",
-      "education": "Medical School, DEF University",
-      "experience": "12 years of experience",
-      "hospital": "123 Children's Hospital",
-      "description": "A pediatrician is a doctor who specializes in the medical care of infants, children, and adolescents.",
-      "image": "https://example.com/images/doctor3.jpg",
-      "schedule": {
-        "Saturday": "8:00 AM - 4:00 PM",
-        "Sunday": "Closed",
-        "Monday": "8:00 AM - 4:00 PM",
-        "Tuesday": "8:00 AM - 4:00 PM",
-        "Wednesday": "8:00 AM - 4:00 PM",
-        "Thursday": "8:00 AM - 4:00 PM",
-        "Friday": "8:00 AM - 4:00 PM"
-      }
-    },
-    {
-      "id": 4,
-      "name": "Dr. Sarah Wilson",
-      "specialty": "Orthopedic Surgeon",
-      "education": "Medical School, GHI University",
-      "experience": "15 years of experience",
-      "hospital": "DEF Orthopedic Hospital",
-      "description": "An orthopedic surgeon is a doctor who specializes in diagnosing and treating diseases and injuries of the musculoskeletal system, including bones, joints, ligaments, tendons, and muscles.",
-      "image": "https://example.com/images/doctor4.jpg",
-      "schedule": {
-        "Saturday": "9:00 AM - 5:00 PM",
-        "Sunday": "Closed",
-        "Monday": "9:00 AM - 5:00 PM",
-        "Tuesday": "9:00 AM - 5:00 PM",
-        "Wednesday": "9:00 AM - 5:00 PM",
-        "Thursday": "9:00 AM - 5:00 PM",
-        "Friday": "9:00 AM - 5:00 PM"
-      }
-    },
-    {
-      "id": 5,
-      "name": "Dr. David Thompson",
-      "specialty": "Neurologist",
-      "education": "Medical School, JKL University",
-      "experience": "10 years of experience",
-      "hospital": "Neurology Specialists Clinic",
-      "description": "A neurologist is a doctor who specializes in diagnosing and treating diseases and conditions of the brain, spinal cord, and nervous system.",
-      "image": "https://example.com/images/doctor5.jpg",
-      "schedule": {
-        "Saturday": "8:00 AM - 4:00 PM",
-        "Sunday": "Closed",
-        "Monday": "8:00 AM - 4:00 PM",
-        "Tuesday": "8:00 AM - 4:00 PM",
-        "Wednesday": "8:00 AM - 4:00 PM",
-        "Thursday": "8:00 AM - 4:00 PM",
-        "Friday": "8:00 AM - 4:00 PM"
-      }
-    },
-    {
-      "id": 6,
-      "name": "Dr. Jennifer Adams",
-      "specialty": "Gynecologist",
-      "education": "Medical School, MNO University",
-      "experience": "9 years of experience",
-      "hospital": "Women's Health Center",
-      "description": "A gynecologist is a doctor who specializes in women's reproductive health, including pregnancy, childbirth, and disorders of the reproductive system.",
-      "image": "https://example.com/images/doctor6.jpg",
-      "schedule": {
-        "Saturday": "10:00 AM - 6:00 PM",
-        "Sunday": "Closed",
-        "Monday": "9:00 AM - 5:00 PM",
-        "Tuesday": "9:00 AM - 5:00 PM",
-        "Wednesday": "9:00 AM - 5:00 PM",
-        "Thursday": "9:00 AM - 5:00 PM",
-        "Friday": "9:00 AM - 5:00 PM"
-      }
-    },
-    {
-      "id": 7,
-      "name": "Dr. Robert Johnson",
-      "specialty": "Ophthalmologist",
       "education": "Medical School, PQR University",
-      "experience": "11 years of experience",
-      "hospital": "Eye Care Clinic",
-      "description": "An ophthalmologist is a doctor who specializes in diagnosing and treating diseases and disorders of the eyes and visual system.",
-      "image": "https://example.com/images/doctor7.jpg",
-      "schedule": {
-        "Saturday": "9:00 AM - 5:00 PM",
-        "Sunday": "Closed",
-        "Monday": "9:00 AM - 5:00 PM",
-        "Tuesday": "9:00 AM - 5:00 PM",
-        "Wednesday": "9:00 AM - 5:00 PM",
-        "Thursday": "9:00 AM - 5:00 PM",
-        "Friday": "9:00 AM - 5:00 PM"
-      }
+      "experience": "12 years of experience",
+      "hospital": "Children's Medical Center",
+      "description": "A pediatrician is a doctor who specializes in providing medical care for infants, children, and adolescents.",
+      "image": "https://thumbs.dreamstime.com/b/smiling-female-doctor-holding-medical-records-lab-coat-her-office-clipboard-looking-camera-56673035.jpg",
+      "schedule": [
+          "9:00 AM",
+          "9:30 AM",
+          "10:00 AM",
+          "10:30 AM",
+          "11:00 AM",
+          "11:30 AM",
+          "12:00 PM",
+          "12:30 PM",
+          "1:00 PM",
+          "1:30 PM",
+          "2:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "3:30 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
     },
     {
-      "id": 8,
-      "name": "Dr. Megan Taylor",
-      "specialty": "Gastroenterologist",
-      "education": "Medical School, STU University",
-      "experience": "13 years of experience",
-      "hospital": "Gastro Health Center",
-      "description": "A gastroenterologist is a doctor who specializes in diagnosing and treating diseases and conditions of the digestive system, including the stomach, intestines, liver, and pancreas.",
-      "image": "https://example.com/images/doctor8.jpg",
-      "schedule": {
-        "Saturday": "10:00 AM - 6:00 PM",
-        "Sunday": "Closed",
-        "Monday": "9:00 AM - 5:00 PM",
-        "Tuesday": "9:00 AM - 5:00 PM",
-        "Wednesday": "9:00 AM - 5:00 PM",
-        "Thursday": "9:00 AM - 5:00 PM",
-        "Friday": "9:00 AM - 5:00 PM"
-      }
+
+      "name": "Dr. Michael Anderson",
+      "specialty": "Orthopedic Surgeon",
+      "education": "Medical School, LMN University",
+      "experience": "15 years of experience",
+      "hospital": "Ortho Care Hospital",
+      "description": "An orthopedic surgeon is a doctor who specializes in diagnosing and treating diseases and injuries of the musculoskeletal system, including bones, joints, ligaments, tendons, and muscles.",
+      "image": "https://t4.ftcdn.net/jpg/03/20/52/31/360_F_320523164_tx7Rdd7I2XDTvvKfz2oRuRpKOPE5z0ni.jpg",
+      "schedule":[
+          "9:00 AM",
+          "9:30 AM",
+          "10:00 AM",
+          "10:30 AM",
+          "11:00 AM",
+          "11:30 AM",
+          "12:00 PM",
+          "12:30 PM",
+          "1:00 PM",
+          "1:30 PM",
+          "2:00 PM",
+          "2:30 PM",
+          "3:00 PM",
+          "3:30 PM",
+          "4:00 PM",
+          "4:30 PM"
+        ]
     }
   ]
-

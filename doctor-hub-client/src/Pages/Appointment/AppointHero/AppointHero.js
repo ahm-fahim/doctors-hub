@@ -2,7 +2,8 @@ import React from "react";
 import { DayPicker } from "react-day-picker";
 import "./AppointHero.css";
 
-const AppointHero = ({ selectedDate, setSelectedDate }) => {
+const AppointHero = ({ doctorInfo, selectedDate, setSelectedDate }) => {
+    const { image, name, specialty,education } = doctorInfo;
     return (
         <div>
             <div className="hero my-16">
@@ -21,12 +22,10 @@ const AppointHero = ({ selectedDate, setSelectedDate }) => {
                         }}
                     />
                     <div>
-                        <h1 className="text-5xl font-bold">Doctors Info</h1>
-                        <p className="py-6">
-                            Provident cupiditate voluptatem et in. Quaerat
-                            fugiat ut assumenda excepturi exercitationem quasi.
-                            In deleniti eaque aut repudiandae et a id nisi.
-                        </p>
+                        <img src={image} className="h-1/2 rounded-xl" alt="" />
+                        <h1 className="text-3xl font-bold mt-3">{name}</h1>
+                        <p className="text-gradient text-sm">{specialty}</p>
+                        <p className="text-gray-500 text-sm">{education}</p>
                     </div>
                 </div>
             </div>
