@@ -30,11 +30,22 @@ const AppointForm = ({ currentDate, info }) => {
                             placeholder="Phone Number"
                             className="input input-bordered form-control"
                         />
-                        <input
-                            type="text"
-                            placeholder="Email"
-                            className="input input-bordered form-control"
-                        />
+                        <div className="flex gap-2 w-full">
+                            <input
+                                type="text"
+                                placeholder="Male / Female"
+                                className="input w-1/2 input-bordered form-control"
+                            />
+                            <input
+                                type="text"
+                                placeholder="Age"
+                                className="input w-1/2 input-bordered form-control"
+                            />
+                        </div>
+                        <textarea
+                            className="textarea textarea-accent"
+                            placeholder="Problem / Diseases"
+                        ></textarea>
 
                         <div className="form-control mt-6">
                             <PrimaryButton>SUBMIT</PrimaryButton>
