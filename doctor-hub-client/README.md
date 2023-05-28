@@ -18,3 +18,7 @@ npm install react-router-dom
 ```
 npm install react-day-picker date-fns
 ```
+
+```
+npm install firebase
+```
