@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
-    const { name, specialty } = doctorInfo;
+    const { _id, name, specialty } = doctorInfo;
 
     const handleBooking = (event) => {
         event.preventDefault();
@@ -17,9 +17,10 @@ const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
         const message = form.message.value;
 
         const formInfo = {
+            doctorId: _id,
             doctor,
             doctorSpecialty,
-            selectedDate: date,
+            appointDate: date,
             schedule,
             patient,
             phone,
@@ -100,12 +101,14 @@ const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
                             className="input input-bordered form-control"
                         />
                         <div className="flex gap-2 w-full">
-                            <input
-                                type="text"
+                            <select
                                 name="gender"
-                                placeholder="Male / Female"
-                                className="input w-1/2 input-bordered form-control"
-                            />
+                                className="select select-accent w-1/2 max-w-xs"
+                            >
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
                             <input
                                 type="text"
                                 name="age"
