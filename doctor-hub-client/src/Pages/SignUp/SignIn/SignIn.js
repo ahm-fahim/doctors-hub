@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const SignIn = () => {
     const [errorMessage, setErrorMessage] = useState("");
@@ -15,7 +16,9 @@ const SignIn = () => {
         const password = form.password.value;
 
         signInUser(email, password)
-            .then((result) => {})
+            .then((result) => {
+                toast.success("Successfully Sign In");
+            })
             .then((error) => {
                 setErrorMessage(errorMessage);
             });

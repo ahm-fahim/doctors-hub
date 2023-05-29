@@ -2,9 +2,11 @@ import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState(" ");
+    const [signUpError, setSignUpError] = useState(" ");
     const { signUpUser, updateUserProfile } = useContext(AuthContext);
 
     const handleSignUp = (event) => {
@@ -28,14 +30,16 @@ const SignUp = () => {
         signUpUser(email, password)
             .then((userCredential) => {
                 const user = userCredential.user;
-                form.reset();
+
+                toast.success("Successfully Sign Up");
 
                 updateUserProfile(profile)
                     .then(() => {})
                     .then((error) => {});
+                form.reset();
             })
             .then((error) => {
-                setErrorMessage(error);
+                setSignUpError(error?.message);
             });
     };
 
@@ -63,6 +67,7 @@ const SignUp = () => {
                         </Link>
                     </div>
                     <form onSubmit={handleSignUp} className="card-body">
+                        <p className="text-red-500">{signUpError}</p>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
