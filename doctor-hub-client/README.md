@@ -22,3 +22,7 @@ npm install react-day-picker date-fns
 ```
 npm install firebase
 ```
+
+```
+npm install react-hot-toast
+```

@@ -1,8 +1,44 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const SignUp = () => {
+    const [errorMessage, setErrorMessage] = useState(" ");
+    const { signUpUser, updateUserProfile } = useContext(AuthContext);
+
+    const handleSignUp = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (password.length < 6) {
+            setErrorMessage("Password must be 6 characters");
+        } else {
+            setErrorMessage(" ");
+        }
+
+        const profile = {
+            displayName: name,
+        };
+
+        signUpUser(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                form.reset();
+
+                updateUserProfile(profile)
+                    .then(() => {})
+                    .then((error) => {});
+            })
+            .then((error) => {
+                setErrorMessage(error);
+            });
+    };
+
     return (
         <div className="hero my-16">
             <div className="hero-content flex-col lg:flex-row-reverse ">
@@ -26,13 +62,15 @@ const SignUp = () => {
                             Sign In
                         </Link>
                     </div>
-                    <div className="card-body">
+                    <form onSubmit={handleSignUp} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
                             <input
+                                required
                                 type="text"
+                                name="name"
                                 placeholder="name"
                                 className="input input-bordered"
                             />
@@ -42,6 +80,8 @@ const SignUp = () => {
                                 <span className="label-text">Email</span>
                             </label>
                             <input
+                                name="email"
+                                required
                                 type="text"
                                 placeholder="email"
                                 className="input input-bordered"
@@ -52,10 +92,15 @@ const SignUp = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input
+                                name="password"
+                                required
                                 type="text"
                                 placeholder="password"
                                 className="input input-bordered"
                             />
+                            <p className="text-white text-xs mt-2">
+                                {errorMessage}
+                            </p>
                             <label className="label">
                                 <Link
                                     to=""
@@ -66,11 +111,14 @@ const SignUp = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn bg-gradient border-none shadow-2xl">
+                            <button
+                                type="submit"
+                                className="btn bg-gradient border-none shadow-2xl"
+                            >
                                 Sign Up
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

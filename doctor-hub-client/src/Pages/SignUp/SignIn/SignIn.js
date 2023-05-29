@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const SignIn = () => {
+    const [errorMessage, setErrorMessage] = useState("");
+    const { signInUser } = useContext(AuthContext);
+
+    const handleSignIn = (event) => {
+        event.preventDefault();
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signInUser(email, password)
+            .then((result) => {})
+            .then((error) => {
+                setErrorMessage(errorMessage);
+            });
+    };
+
     return (
         <div className="hero my-16">
             <div className="hero-content flex-col lg:flex-row-reverse ">
@@ -26,12 +44,13 @@ const SignIn = () => {
                             Sign In
                         </Link>
                     </div>
-                    <div className="card-body">
+                    <form onSubmit={handleSignIn} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
                             <input
+                                name="email"
                                 type="email"
                                 placeholder="email"
                                 className="input input-bordered"
@@ -42,6 +61,7 @@ const SignIn = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input
+                                name="password"
                                 type="text"
                                 placeholder="password"
                                 className="input input-bordered"
@@ -60,7 +80,7 @@ const SignIn = () => {
                                 Sign Ip
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

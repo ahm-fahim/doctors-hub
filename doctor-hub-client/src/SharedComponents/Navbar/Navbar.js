@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MdOutlineManageAccounts } from "react-icons/md";
+import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Navbar = () => {
+    const { user, signOutUser } = useContext(AuthContext);
     const menuItem = (
         <>
             <li className="text-hover mt-5 lg:mt-0 px-2">
@@ -17,9 +19,11 @@ const Navbar = () => {
             <li className="text-hover mt-5 lg:mt-0 px-2">
                 <Link to="/">Review</Link>
             </li>
-            <li className="text-hover mt-5 lg:mt-0 px-2">
-                <Link to="/dashboard">Dashboard</Link>
-            </li>
+            {user?.uid && (
+                <li className="text-hover mt-5 lg:mt-0 px-2">
+                    <Link to="/dashboard">Dashboard</Link>
+                </li>
+            )}
         </>
     );
     return (
@@ -59,10 +63,44 @@ const Navbar = () => {
                 <ul className="menu-horizontal px-1">{menuItem}</ul>
             </div>
             <div className="navbar-end">
-                <Link to="/signup" className="text-gradient">
-                    Sign Up
-                </Link>
-                <MdOutlineManageAccounts className=" ml-3 text-4xl font-bold text-gradient" />
+                {user?.uid ? (
+                    <Link
+                        onClick={() => signOutUser()}
+                        className="text-gradient"
+                    >
+                        Sign Out
+                    </Link>
+                ) : (
+                    <Link to="/signup" className="text-gradient">
+                        Sign Up
+                    </Link>
+                )}
+
+                <div className="dropdown dropdown-end">
+                    <MdOutlineManageAccounts
+                        tabIndex={0}
+                        className=" ml-3 text-4xl font-bold text-gradient"
+                    />
+                    <ul
+                        tabIndex={0}
+                        className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                        <li>
+                            <h3 className="text-gradient">
+                                {user?.uid ? (
+                                    user.displayName
+                                ) : (
+                                    <Link
+                                        to="/signIn"
+                                        className="text-gradient"
+                                    >
+                                        Sign In
+                                    </Link>
+                                )}
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     );
