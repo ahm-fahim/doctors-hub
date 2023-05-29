@@ -8,6 +8,7 @@ import DashboardLayouts from "../../Layouts/DashboardLayouts/DashboardLayouts";
 import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import AddDoctors from "../../Pages/Dashboard/Doctors/AddDoctors/AddDoctors";
 import UpdateDoctors from "../../Pages/Dashboard/Doctors/UpdateDoctors/UpdateDoctors";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -38,7 +39,11 @@ export const router = createBrowserRouter([
     },
     {
         path: "/dashboard",
-        element: <DashboardLayouts />,
+        element: (
+            <PrivateRoute>
+                <DashboardLayouts />
+            </PrivateRoute>
+        ),
         children: [
             {
                 path: "/dashboard",

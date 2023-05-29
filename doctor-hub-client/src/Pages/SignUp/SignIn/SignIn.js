@@ -1,12 +1,17 @@
 import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const SignIn = () => {
     const [errorMessage, setErrorMessage] = useState("");
+
     const { signInUser } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -18,6 +23,8 @@ const SignIn = () => {
         signInUser(email, password)
             .then((result) => {
                 toast.success("Successfully Sign In");
+
+                navigate(from, { replace: true });
             })
             .then((error) => {
                 setErrorMessage(errorMessage);

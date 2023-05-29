@@ -1,13 +1,18 @@
 import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState(" ");
     const [signUpError, setSignUpError] = useState(" ");
+    
     const { signUpUser, updateUserProfile } = useContext(AuthContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
 
     const handleSignUp = (event) => {
         event.preventDefault();
@@ -33,9 +38,12 @@ const SignUp = () => {
 
                 toast.success("Successfully Sign Up");
 
+                navigate(from, { replace: true });
+
                 updateUserProfile(profile)
                     .then(() => {})
                     .then((error) => {});
+
                 form.reset();
             })
             .then((error) => {
