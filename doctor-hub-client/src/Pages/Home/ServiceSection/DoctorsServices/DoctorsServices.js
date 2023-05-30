@@ -26,7 +26,7 @@ const DoctorsServices = () => {
             </h1>
             {loading ? (
                 <Loader>
-                    
+                    <h1 className="text-gradient text-center text-4xl font-bold">Server Error! I'll be back soon</h1>
                 </Loader>
             ) : (
                 <div className="md:grid grid-cols-3 gap-8 justify-items-center">
