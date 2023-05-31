@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AppointHero from "../AppointHero/AppointHero";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
 import { format } from "date-fns";
 import { useParams } from "react-router-dom";
+import { DateContext } from "../../../../../../context/DateProvider/DateProvider";
+import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../../../../SharedComponents/Loader/Loader";
 
 const Appointment = () => {
     const { id } = useParams();
-    const [doctorInfo, setDoctorInfo] = useState({});
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const { selectedDate, dateSelection } = useContext(DateContext);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/doctors/${id}`)
-            .then((res) => res.json())
-            .then((data) => {
-                setDoctorInfo(data);
-            });
-    }, [id]);
+    const { data: doctorInfo = [], isLoading } = useQuery({
+        queryKey: ["doctors", id],
+        queryFn: () =>
+            fetch(`http://localhost:5000/doctors/${id}`).then((res) =>
+                res.json()
+            ),
+    });
 
-
-    // current date 
+    if (isLoading) {
+        return <Loader />;
+    }
+  
+    // current date
     let currentDate = " Please Pick The Date ";
     if (selectedDate) {
         currentDate = (
@@ -30,7 +35,7 @@ const Appointment = () => {
             <AppointHero
                 doctorInfo={doctorInfo}
                 selectedDate={selectedDate}
-                setSelectedDate={setSelectedDate}
+                setSelectedDate={dateSelection}
             />
 
             <AvailableAppointments

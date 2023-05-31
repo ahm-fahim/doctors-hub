@@ -35,9 +35,36 @@ async function run() {
 
         // get all doctors data
         app.get("/doctors", async (req, res) => {
+            const date = req.query.date;
+            console.log(date);
             const query = {};
-            const cursor = doctorsCollection.find(query);
-            const doctors = await cursor.toArray();
+            const doctors = await doctorsCollection.find(query).toArray();
+
+            //get booking provide date
+            const bookingQuery = {
+                appointDate: date,
+            };
+            const alreadyBooked = await bookingCollection
+                .find(bookingQuery)
+                .toArray();
+
+            doctors.forEach((doctor) => {
+                const id = doctor._id.toString();
+
+                const bookedSchedule = alreadyBooked.filter(
+                    (book) => book.doctorId === id
+                );
+
+                const bookedSlots = bookedSchedule.map((book) => book.schedule);
+
+                const remainingSlots = doctor.schedule.filter(
+                    (slot) => !bookedSlots.includes(slot)
+                );
+                doctor.schedule = remainingSlots;
+            });
+                console.log(date, doctors);
+
+
             res.send(doctors);
         });
 
@@ -63,7 +90,6 @@ async function run() {
             const bookings = await cursor.toArray();
             res.send(bookings);
         });
-        
     } finally {
         // Ensures that the client will close when you finish/error
         // await client.close();

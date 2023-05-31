@@ -1,49 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import DoctorsServiceCard from "../DoctorsServiceCard/DoctorsServiceCard";
 import Loader from "../../../../../SharedComponents/Loader/Loader";
-// import { useQuery } from "@tanstack/react-query";
+import { format } from "date-fns";
+import { DateContext } from "../../../../../context/DateProvider/DateProvider";
+import { useQuery } from "@tanstack/react-query";
 
 const DoctorsServices = () => {
-    const [doctorsInfo, setDoctorsInfo] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const { selectedDate } = useContext(DateContext);
+    const date = format(selectedDate, "PP");
 
-    // const { data: doctorsInfo = [] } = useQuery({
-    //     queryKey: ["doctors"],
-    //     queryFn: () =>
-    //         fetch("http://localhost:5000/doctors").then((res) => res.json()),
-    // });
+    const { data: doctorsInfo = [], isLoading } = useQuery({
+        queryKey: ["doctors", date],
+        queryFn: () =>
+            fetch(`http://localhost:5000/doctors?date=${date}`).then((res) =>
+                res.json()
+            ),
+    });
 
-    useEffect(() => {
-        fetch("http://localhost:5000/doctors")
-            .then((res) => res.json())
-            .then((data) => {
-                setLoading(false);
-                setDoctorsInfo(data);
-            })
-            .then((error) => {
-                console.error(error);
-                setLoading(false);
-            });
-    }, []);
+    if (isLoading) {
+        return (
+            <Loader>
+                <h1 className="text-gradient text-center text-4xl font-bold">
+                    Server Error! I'll be back soon
+                </h1>
+            </Loader>
+        );
+    }
 
     return (
         <div className="my-16">
             <h1 className="text-3xl font-bold text-gradient">
                 Doctors Services
             </h1>
-            {loading ? (
-                <Loader>
-                    <h1 className="text-gradient text-center text-4xl font-bold">
-                        Server Error! I'll be back soon
-                    </h1>
-                </Loader>
-            ) : (
-                <div className="md:grid grid-cols-3 gap-8 justify-items-center">
-                    {doctorsInfo.map((info) => (
-                        <DoctorsServiceCard key={info._id} info={info} />
-                    ))}
-                </div>
-            )}
+
+            <div className="md:grid grid-cols-3 gap-8 justify-items-center">
+                {doctorsInfo.map((info) => (
+                    <DoctorsServiceCard key={info._id} info={info} />
+                ))}
+            </div>
         </div>
     );
 };

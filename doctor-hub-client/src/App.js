@@ -6,16 +6,19 @@ import "react-day-picker/dist/style.css";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DateProvider from "./context/DateProvider/DateProvider";
 
 const queryClient = new QueryClient();
 
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
-            <AuthProvider>
-                <RouterProvider router={router} />;
-                <Toaster />
-            </AuthProvider>
+            <DateProvider>
+                <AuthProvider>
+                    <RouterProvider router={router} />;
+                    <Toaster />
+                </AuthProvider>
+            </DateProvider>
         </QueryClientProvider>
     );
 }
