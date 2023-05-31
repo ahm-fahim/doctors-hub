@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import AppointHero from "../AppointHero/AppointHero";
 import AvailableAppointments from "../AvailableAppointments/AvailableAppointments";
 import { format } from "date-fns";
@@ -22,8 +22,8 @@ const Appointment = () => {
     if (isLoading) {
         return <Loader />;
     }
-  
-    // current date
+
+    //CURRENT DATE
     let currentDate = " Please Pick The Date ";
     if (selectedDate) {
         currentDate = (

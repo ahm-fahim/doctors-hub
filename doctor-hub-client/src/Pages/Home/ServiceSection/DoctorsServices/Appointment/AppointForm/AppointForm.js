@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
+import { DateContext } from "../../../../../../context/DateProvider/DateProvider";
+import { format } from "date-fns";
 
-const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
+const AppointForm = ({ closeModal, doctorInfo, appointInfo }) => {
     const { _id, name, specialty } = doctorInfo;
+    const { selectedDate } = useContext(DateContext);
+
+    const date = format(selectedDate, "PP");
 
     const handleBooking = (event) => {
         event.preventDefault();
@@ -69,7 +74,7 @@ const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
                         <input
                             type="text"
                             name="date"
-                            value={currentDate.props.children}
+                            value={date}
                             readOnly
                             className="outline-none text-gradient font-bold form-control"
                         />
