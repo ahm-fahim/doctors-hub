@@ -1,5 +1,5 @@
 import React from "react";
-import PrimaryButton from "../../../components/PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../../../../../components/PrimaryButton/PrimaryButton";
 
 const AvailableAppointmentCard = ({ doctorInfo, appointFormInfo }) => {
     const { schedule } = doctorInfo;

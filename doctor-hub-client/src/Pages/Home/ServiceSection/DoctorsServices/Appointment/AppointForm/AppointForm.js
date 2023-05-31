@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-hot-toast";
 
 const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
     const { _id, name, specialty } = doctorInfo;
@@ -39,13 +40,11 @@ const AppointForm = ({ closeModal, doctorInfo, currentDate, appointInfo }) => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.acknowledged) {
-                    alert("Booked Successfully!");
+                    toast.success("Booked Successfully!");
                     form.reset();
                     closeModal();
                 }
             });
-
-        console.log(formInfo);
     };
 
     return (

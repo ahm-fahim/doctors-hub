@@ -1,5 +1,5 @@
 import React from "react";
-import DoctorsServices from "../DoctorsServices/DoctorsServices";
+import DoctorsServices from "../DoctorsServices/DoctorsServices/DoctorsServices";
 
 const Service = () => {
     return (

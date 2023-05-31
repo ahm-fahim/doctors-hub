@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AvailableAppointmentCard from "./AvailableAppointmentCard";
-import Modal from "../../../SharedComponents/Modal/Modal";
+import Modal from "../../../../../../SharedComponents/Modal/Modal";
 import AppointForm from "../AppointForm/AppointForm";
 
 const AvailableAppointments = ({ doctorInfo, currentDate }) => {

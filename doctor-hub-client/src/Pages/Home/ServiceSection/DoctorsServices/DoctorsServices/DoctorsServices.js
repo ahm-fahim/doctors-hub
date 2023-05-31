@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
-import DoctorsServiceCard from "./DoctorsServiceCard";
-import Loader from "../../../../SharedComponents/Loader/Loader";
+import DoctorsServiceCard from "../DoctorsServiceCard/DoctorsServiceCard";
+import Loader from "../../../../../SharedComponents/Loader/Loader";
+// import { useQuery } from "@tanstack/react-query";
 
 const DoctorsServices = () => {
     const [doctorsInfo, setDoctorsInfo] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    // const { data: doctorsInfo = [] } = useQuery({
+    //     queryKey: ["doctors"],
+    //     queryFn: () =>
+    //         fetch("http://localhost:5000/doctors").then((res) => res.json()),
+    // });
 
     useEffect(() => {
         fetch("http://localhost:5000/doctors")
@@ -26,7 +33,9 @@ const DoctorsServices = () => {
             </h1>
             {loading ? (
                 <Loader>
-                    <h1 className="text-gradient text-center text-4xl font-bold">Server Error! I'll be back soon</h1>
+                    <h1 className="text-gradient text-center text-4xl font-bold">
+                        Server Error! I'll be back soon
+                    </h1>
                 </Loader>
             ) : (
                 <div className="md:grid grid-cols-3 gap-8 justify-items-center">

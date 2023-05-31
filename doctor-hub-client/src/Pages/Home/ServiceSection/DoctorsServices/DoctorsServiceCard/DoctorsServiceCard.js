@@ -1,6 +1,6 @@
 import React from "react";
 import "./DoctorsServiceCard.css";
-import DoctorsDetails from "./DoctorsDetails";
+import DoctorsDetails from "../DoctorsDetails/DoctorsDetails";
 
 const DoctorsServiceCard = ({ info }) => {
     const { specialty, description, image, bgClass, color, name } = info;

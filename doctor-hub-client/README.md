@@ -26,3 +26,8 @@ npm install firebase
 ```
 npm install react-hot-toast
 ```
+
+```
+npm i @tanstack/react-query
+
+```

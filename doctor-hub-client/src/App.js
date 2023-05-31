@@ -5,13 +5,18 @@ import "./SharedComponents/Css/customStyle.css";
 import "react-day-picker/dist/style.css";
 import { Toaster } from "react-hot-toast";
 import AuthProvider from "./context/AuthProvider/AuthProvider";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
     return (
-        <AuthProvider>
-            <RouterProvider router={router} />;
-            <Toaster />
-        </AuthProvider>
+        <QueryClientProvider client={queryClient}>
+            <AuthProvider>
+                <RouterProvider router={router} />;
+                <Toaster />
+            </AuthProvider>
+        </QueryClientProvider>
     );
 }
 

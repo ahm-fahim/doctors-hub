@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayouts from "../../Layouts/MainLayouts/MainLayouts";
 import Home from "../../Pages/Home/Home/Home";
-import Appointment from "../../Pages/Appointment/Appointment/Appointment";
+import Appointment from "../../Pages/Home/ServiceSection/DoctorsServices/Appointment/Appointment/Appointment";
 import SignUp from "../../Pages/SignUp/SignUp/SignUp";
 import SignIn from "../../Pages/SignUp/SignIn/SignIn";
 import DashboardLayouts from "../../Layouts/DashboardLayouts/DashboardLayouts";

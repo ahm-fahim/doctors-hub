@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Modal from "../../../../SharedComponents/Modal/Modal";
-import PrimaryButton from "../../../../components/PrimaryButton/PrimaryButton";
+import Modal from "../../../../../SharedComponents/Modal/Modal";
+import PrimaryButton from "../../../../../components/PrimaryButton/PrimaryButton";
 
 const DoctorsDetails = ({ info }) => {
     const {
@@ -33,8 +33,10 @@ const DoctorsDetails = ({ info }) => {
             >
                 Details
             </Link>
-        
-            <PrimaryButton path={`/appointment/${_id}`}>Get Appoint</PrimaryButton>
+
+            <PrimaryButton path={`/appointment/${_id}`}>
+                Get Appoint
+            </PrimaryButton>
 
             <Modal className="lg:p-16" isOpen={isOpen} onClose={closeModal}>
                 <div>
