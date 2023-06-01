@@ -11,17 +11,7 @@ const Appointment = () => {
     const { id } = useParams();
     const { selectedDate, dateSelection } = useContext(DateContext);
 
-    const { data: doctorInfo = [], isLoading } = useQuery({
-        queryKey: ["doctors", id],
-        queryFn: () =>
-            fetch(`http://localhost:5000/doctors/${id}`).then((res) =>
-                res.json()
-            ),
-    });
-
-    if (isLoading) {
-        return <Loader />;
-    }
+    const date = format(selectedDate, "PP");
 
     //CURRENT DATE
     let currentDate = " Please Pick The Date ";
@@ -30,6 +20,19 @@ const Appointment = () => {
             <span className="text-2xl ml-3">{format(selectedDate, "PP")}</span>
         );
     }
+
+    const { data: doctorInfo = [], isLoading, refetch } = useQuery({
+        queryKey: ["doctors", id, date],
+        queryFn: () =>
+            fetch(`http://localhost:5000/doctors/${id}?date=${date}`).then(
+                (res) => res.json()
+            ),
+    });
+
+    if (isLoading) {
+        return <Loader />;
+    }
+
     return (
         <div>
             <AppointHero
@@ -39,6 +42,7 @@ const Appointment = () => {
             />
 
             <AvailableAppointments
+                refetch={refetch}
                 doctorInfo={doctorInfo}
                 currentDate={currentDate}
             />

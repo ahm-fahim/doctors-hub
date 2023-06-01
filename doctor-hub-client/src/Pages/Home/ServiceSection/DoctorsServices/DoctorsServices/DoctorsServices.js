@@ -1,20 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import DoctorsServiceCard from "../DoctorsServiceCard/DoctorsServiceCard";
 import Loader from "../../../../../SharedComponents/Loader/Loader";
-import { format } from "date-fns";
-import { DateContext } from "../../../../../context/DateProvider/DateProvider";
 import { useQuery } from "@tanstack/react-query";
 
 const DoctorsServices = () => {
-    const { selectedDate } = useContext(DateContext);
-    const date = format(selectedDate, "PP");
-
     const { data: doctorsInfo = [], isLoading } = useQuery({
-        queryKey: ["doctors", date],
+        queryKey: ["doctors"],
         queryFn: () =>
-            fetch(`http://localhost:5000/doctors?date=${date}`).then((res) =>
-                res.json()
-            ),
+            fetch(`http://localhost:5000/doctors`).then((res) => res.json()),
     });
 
     if (isLoading) {

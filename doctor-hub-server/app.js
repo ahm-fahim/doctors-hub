@@ -35,44 +35,38 @@ async function run() {
 
         // get all doctors data
         app.get("/doctors", async (req, res) => {
-            const date = req.query.date;
-            console.log(date);
             const query = {};
             const doctors = await doctorsCollection.find(query).toArray();
-
-            //get booking provide date
-            const bookingQuery = {
-                appointDate: date,
-            };
-            const alreadyBooked = await bookingCollection
-                .find(bookingQuery)
-                .toArray();
-
-            doctors.forEach((doctor) => {
-                const id = doctor._id.toString();
-
-                const bookedSchedule = alreadyBooked.filter(
-                    (book) => book.doctorId === id
-                );
-
-                const bookedSlots = bookedSchedule.map((book) => book.schedule);
-
-                const remainingSlots = doctor.schedule.filter(
-                    (slot) => !bookedSlots.includes(slot)
-                );
-                doctor.schedule = remainingSlots;
-            });
-                console.log(date, doctors);
-
-
             res.send(doctors);
         });
 
         // get single doctor data
         app.get("/doctors/:id", async (req, res) => {
+            const date = req.query.date;
+            console.log(date);
             const id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const doctor = await doctorsCollection.findOne(query);
+
+            //get booking provide date
+            const bookingQuery = {
+                appointDate: date,
+            };
+
+            const alreadyBooked = await bookingCollection
+                .find(bookingQuery)
+                .toArray();
+
+            const bookedSchedule = alreadyBooked.map(
+                (booked) => booked.schedule
+            );
+
+            const remainingSchedule = doctor.schedule.filter(
+                (schedule) => !bookedSchedule.includes(schedule)
+            );
+
+            doctor.schedule = remainingSchedule;
+
             res.send(doctor);
         });
 

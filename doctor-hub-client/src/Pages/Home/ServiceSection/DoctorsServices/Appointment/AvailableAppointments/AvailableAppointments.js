@@ -3,7 +3,7 @@ import AvailableAppointmentCard from "./AvailableAppointmentCard";
 import Modal from "../../../../../../SharedComponents/Modal/Modal";
 import AppointForm from "../AppointForm/AppointForm";
 
-const AvailableAppointments = ({ doctorInfo, currentDate }) => {
+const AvailableAppointments = ({ doctorInfo, currentDate, refetch }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [appointInfo, setAppointInfo] = useState(null);
 
@@ -34,6 +34,7 @@ const AvailableAppointments = ({ doctorInfo, currentDate }) => {
             {appointInfo && (
                 <Modal className="lg:p-16" isOpen={isOpen} onClose={closeModal}>
                     <AppointForm
+                        refetch={refetch}
                         closeModal={closeModal}
                         currentDate={currentDate}
                         appointInfo={appointInfo}

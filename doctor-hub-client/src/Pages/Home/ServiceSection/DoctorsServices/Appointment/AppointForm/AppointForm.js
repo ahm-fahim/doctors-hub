@@ -3,7 +3,7 @@ import { toast } from "react-hot-toast";
 import { DateContext } from "../../../../../../context/DateProvider/DateProvider";
 import { format } from "date-fns";
 
-const AppointForm = ({ closeModal, doctorInfo, appointInfo }) => {
+const AppointForm = ({ closeModal, doctorInfo, appointInfo, refetch }) => {
     const { _id, name, specialty } = doctorInfo;
     const { selectedDate } = useContext(DateContext);
 
@@ -46,6 +46,7 @@ const AppointForm = ({ closeModal, doctorInfo, appointInfo }) => {
             .then((data) => {
                 if (data.acknowledged) {
                     toast.success("Booked Successfully!");
+                    refetch();
                     form.reset();
                     closeModal();
                 }
