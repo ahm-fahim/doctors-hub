@@ -49,6 +49,9 @@ const AppointForm = ({ closeModal, doctorInfo, appointInfo, refetch }) => {
                     refetch();
                     form.reset();
                     closeModal();
+                } else {
+                    toast.error(data.message);
+                    closeModal();
                 }
             });
     };
