@@ -76,6 +76,7 @@ async function run() {
 
             const query = {
                 appointDate: bookings.appointDate,
+                phone: bookings.phone,
                 doctorId: bookings.doctorId,
             };
 
