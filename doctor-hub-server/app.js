@@ -92,11 +92,18 @@ async function run() {
             res.send(result);
         });
 
-        // get booking data
+        // // get booking data
+        // app.get("/bookings", async (req, res) => {
+        //     const query = {};
+        //     const cursor = bookingCollection.find(query);
+        //     const bookings = await cursor.toArray();
+        //     res.send(bookings);
+        // });
+        // get booking data for user
         app.get("/bookings", async (req, res) => {
-            const query = {};
-            const cursor = bookingCollection.find(query);
-            const bookings = await cursor.toArray();
+            const phone = req.query.phone;
+            const query = { phone: phone };
+            const bookings = await bookingCollection.find(query).toArray();
             res.send(bookings);
         });
     } finally {

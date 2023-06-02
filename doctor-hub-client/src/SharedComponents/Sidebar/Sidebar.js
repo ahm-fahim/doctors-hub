@@ -5,12 +5,18 @@ import { GiDoctorFace } from "react-icons/gi";
 const link = [
     {
         id: 1,
+        to: "/dashboard/myAppointment",
+        name: "My Appointment",
+        icon: <AiOutlineDashboard />,
+    },
+    {
+        id: 2,
         to: "/dashboard/addDoctors",
         name: "Add Doctors",
         icon: <GiDoctorFace />,
     },
     {
-        id: 2,
+        id: 3,
         to: "/dashboard/updateDoctors",
         name: "Update Doctors",
         icon: <AiOutlineDashboard />,

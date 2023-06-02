@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 const SignUp = () => {
     const [errorMessage, setErrorMessage] = useState(" ");
     const [signUpError, setSignUpError] = useState(" ");
-    
+
     const { signUpUser, updateUserProfile } = useContext(AuthContext);
 
     const location = useLocation();
@@ -19,6 +19,7 @@ const SignUp = () => {
 
         const form = event.target;
         const name = form.name.value;
+        const phone = form.phone.value;
         const email = form.email.value;
         const password = form.password.value;
 
@@ -30,6 +31,7 @@ const SignUp = () => {
 
         const profile = {
             displayName: name,
+            photoURL: phone,
         };
 
         signUpUser(email, password)
@@ -85,6 +87,18 @@ const SignUp = () => {
                                 type="text"
                                 name="name"
                                 placeholder="name"
+                                className="input input-bordered"
+                            />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Phone</span>
+                            </label>
+                            <input
+                                required
+                                type="text"
+                                name="phone"
+                                placeholder="phone (same number of appoint)"
                                 className="input input-bordered"
                             />
                         </div>

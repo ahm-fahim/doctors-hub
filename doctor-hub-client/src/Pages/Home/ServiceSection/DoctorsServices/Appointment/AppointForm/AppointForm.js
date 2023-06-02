@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { toast } from "react-hot-toast";
 import { DateContext } from "../../../../../../context/DateProvider/DateProvider";
 import { format } from "date-fns";
+import { AuthContext } from "../../../../../../context/AuthProvider/AuthProvider";
 
 const AppointForm = ({ closeModal, doctorInfo, appointInfo, refetch }) => {
     const { _id, name, specialty } = doctorInfo;
     const { selectedDate } = useContext(DateContext);
-
+  
     const date = format(selectedDate, "PP");
 
     const handleBooking = (event) => {
