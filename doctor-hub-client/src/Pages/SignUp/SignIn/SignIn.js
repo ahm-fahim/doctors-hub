@@ -5,8 +5,6 @@ import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
 
 const SignIn = () => {
-    const [errorMessage, setErrorMessage] = useState("");
-
     const { signInUser } = useContext(AuthContext);
 
     const location = useLocation();
@@ -23,11 +21,10 @@ const SignIn = () => {
         signInUser(email, password)
             .then((result) => {
                 toast.success("Successfully Sign In");
-
                 navigate(from, { replace: true });
             })
             .then((error) => {
-                setErrorMessage(errorMessage);
+                toast.error(error);
             });
     };
 

@@ -15,7 +15,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
             <DateProvider>
                 <AuthProvider>
-                    <RouterProvider router={router} />;
+                    <RouterProvider router={router} />
                     <Toaster />
                 </AuthProvider>
             </DateProvider>

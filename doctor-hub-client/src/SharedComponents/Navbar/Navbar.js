@@ -53,7 +53,7 @@ const Navbar = () => {
                         {menuItem}
                     </ul>
                 </div>
-                <Link className="normal-case text-xl">
+                <Link to="/" className="normal-case text-xl">
                     <span className="text-3xl font-bold text-gradient ">
                         Doctors Hub
                     </span>
