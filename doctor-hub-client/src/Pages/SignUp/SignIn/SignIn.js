@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
@@ -8,8 +8,8 @@ const SignIn = () => {
     const { signInUser } = useContext(AuthContext);
 
     const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
-    let from = location.state?.from?.pathname || "/";
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -20,6 +20,7 @@ const SignIn = () => {
 
         signInUser(email, password)
             .then((result) => {
+                const user = result.user;
                 toast.success("Successfully Sign In");
                 navigate(from, { replace: true });
             })
