@@ -5,18 +5,12 @@ import { GiDoctorFace } from "react-icons/gi";
 const link = [
     {
         id: 1,
-        to: "/dashboard",
-        name: "Dashboard",
-        icon: <AiOutlineDashboard />,
-    },
-    {
-        id: 2,
         to: "/dashboard/addDoctors",
         name: "Add Doctors",
         icon: <GiDoctorFace />,
     },
     {
-        id: 3,
+        id: 2,
         to: "/dashboard/updateDoctors",
         name: "Update Doctors",
         icon: <AiOutlineDashboard />,
@@ -67,8 +61,17 @@ const Sidebar = ({ children }) => {
                     isSidebarOpen || "lg:block hidden"
                 }`}
             >
+                <li className="p-2 w-full hover:text-emerald-500 hover:bg-emerald-50 hover:rounded-tr-2xl">
+                    <Link to="/dashboard" className="flex items-center">
+                        <AiOutlineDashboard className="mr-2 text-2xl text-gray-500" />
+                        Dashboard
+                    </Link>
+                </li>
                 {link.map((item) => (
-                    <li key={item.id} className="p-2 w-full hover:text-emerald-500" >
+                    <li
+                        key={item.id}
+                        className="p-2 w-full hover:text-emerald-500 hover:bg-emerald-50"
+                    >
                         <Link to={item.to} className="flex items-center">
                             <span className="mr-2 text-2xl text-gray-500">
                                 {item.icon}
@@ -80,7 +83,9 @@ const Sidebar = ({ children }) => {
             </ul>
 
             {/* Main Content */}
-            <div className="flex-grow bg-emerald-50 rounded-tl-2xl p-5 h-screen">{children}</div>
+            <div className="flex-grow bg-emerald-50 rounded-tl-2xl p-5 h-screen">
+                {children}
+            </div>
         </div>
     );
 };
