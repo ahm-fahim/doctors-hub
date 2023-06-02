@@ -1,21 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { AiOutlineDashboard } from "react-icons/ai";
+import { GiDoctorFace } from "react-icons/gi";
 const link = [
     {
         id: 1,
         to: "/dashboard",
         name: "Dashboard",
+        icon: <AiOutlineDashboard />,
     },
     {
         id: 2,
         to: "/dashboard/addDoctors",
         name: "Add Doctors",
+        icon: <GiDoctorFace />,
     },
     {
         id: 3,
         to: "/dashboard/updateDoctors",
         name: "Update Doctors",
+        icon: <AiOutlineDashboard />,
     },
 ];
 
@@ -27,10 +31,10 @@ const Sidebar = ({ children }) => {
     };
 
     return (
-        <div className="flex">
+        <div className="flex items-center">
             {/* Toggle Button */}
             <button
-                className="block lg:hidden text-gray-500 hover:text-gray-700 focus:outline-none"
+                className="block lg:hidden p-2 bg-gradient text-gray-500 hover:text-white focus:outline-none"
                 onClick={toggleSidebar}
             >
                 <svg
@@ -59,19 +63,24 @@ const Sidebar = ({ children }) => {
 
             {/* Sidebar */}
             <ul
-                className={`lg:w-64 bg-gradient h-screen ${
+                className={`w-60 lg:w-60  h-screen ${
                     isSidebarOpen || "lg:block hidden"
                 }`}
             >
                 {link.map((item) => (
-                    <li key={item.id}>
-                        <Link to={item.to}>{item.name}</Link>
+                    <li key={item.id} className="p-2 w-full hover:text-emerald-500" >
+                        <Link to={item.to} className="flex items-center">
+                            <span className="mr-2 text-2xl text-gray-500">
+                                {item.icon}
+                            </span>
+                            {item.name}
+                        </Link>
                     </li>
                 ))}
             </ul>
 
             {/* Main Content */}
-            <div className="flex-grow">{children}</div>
+            <div className="flex-grow bg-emerald-50 rounded-tl-2xl p-5 h-screen">{children}</div>
         </div>
     );
 };
