@@ -1,21 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import Loader from "../../../SharedComponents/Loader/Loader";
 
 const MyAppointment = () => {
     const { user } = useContext(AuthContext);
     const phone = user?.photoURL;
+    const [date, setDate] = useState(new Date());
 
-    console.log("my appointment", phone);
-
-    const { data: bookings = [] } = useQuery({
-        queryKey: ["bookings", phone],
+    const { data: bookings = [], isLoading } = useQuery({
+        queryKey: ["bookings", phone, date],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/bookings?phone=${phone}`);
+            const res = await fetch(
+                `http://localhost:5000/bookings?phone=${phone}&date=${date}`
+            );
             const data = await res.json();
             return data;
         },
     });
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <div>
@@ -23,11 +28,15 @@ const MyAppointment = () => {
                 <h1 className="text-gradient text-3xl font-bold">
                     My Appointment
                 </h1>
-                <select className="select select-accent max-w-xs">
-                    <option>Date</option>
-                    <option>Auto</option>
-                    <option>Dark mode</option>
-                    <option>Light mode</option>
+                <select
+                    onChange={(e) => setDate(e.target.value)}
+                    className="select select-accent max-w-xs"
+                >
+                    {bookings.map((date) => (
+                        <option value={date.appointDate}>
+                            {date.appointDate}
+                        </option>
+                    ))}
                 </select>
             </div>
             <div className="overflow-x-auto mt-10">

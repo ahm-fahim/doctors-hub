@@ -1,32 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const SignIn = () => {
-    const { signInUser } = useContext(AuthContext);
+    const { signInUser, user, errorMessage } = useContext(AuthContext);
+
+    const [userName, setUserName] = useState("");
+    const [password, setPassword] = useState("");
 
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
 
-    const handleSignIn = (event) => {
+    const handleSignIn = async (event) => {
         event.preventDefault();
 
-        const form = event.target;
-        const email = form.email.value;
-        const password = form.password.value;
+        signInUser(userName, password);
 
-        signInUser(email, password)
-            .then((result) => {
-                const user = result.user;
-                toast.success("Successfully Sign In");
-                navigate(from, { replace: true });
-            })
-            .then((error) => {
-                toast.error(error);
-            });
+        console.log("user user user user", user);
+
+        if (!errorMessage) {
+            toast.success("Successfully Sign In");
+            navigate(from, { replace: true });
+        } else {
+            toast.error(errorMessage);
+        }
     };
 
     return (
@@ -55,12 +55,13 @@ const SignIn = () => {
                     <form onSubmit={handleSignIn} className="card-body">
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Email</span>
+                                <span className="label-text">User Name</span>
                             </label>
                             <input
-                                name="email"
-                                type="email"
-                                placeholder="email"
+                                name="userName"
+                                type="userName"
+                                onChange={(e) => setUserName(e.target.value)}
+                                placeholder="User Name"
                                 className="input input-bordered"
                             />
                         </div>
@@ -71,6 +72,7 @@ const SignIn = () => {
                             <input
                                 name="password"
                                 type="text"
+                                onChange={(e) => setPassword(e.target.value)}
                                 placeholder="password"
                                 className="input input-bordered"
                             />

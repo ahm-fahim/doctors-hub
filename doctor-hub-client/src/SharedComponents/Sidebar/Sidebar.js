@@ -76,7 +76,7 @@ const Sidebar = ({ children }) => {
                 {link.map((item) => (
                     <li
                         key={item.id}
-                        className="p-2 w-full hover:text-emerald-500 hover:bg-emerald-50"
+                        className="p-2 w-full hover:text-emerald-500 hover:bg-emerald-50 "
                     >
                         <Link to={item.to} className="flex items-center">
                             <span className="mr-2 text-2xl text-gray-500">

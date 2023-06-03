@@ -1,56 +1,29 @@
 import React, { useContext, useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 import { toast } from "react-hot-toast";
+import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const SignUp = () => {
-    const [errorMessage, setErrorMessage] = useState(" ");
-    const [signUpError, setSignUpError] = useState(" ");
+    const { signUpUser, user, errorMessage } = useContext(AuthContext);
 
-    const { signUpUser, updateUserProfile } = useContext(AuthContext);
+    const [userName, setUserName] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+    const [password, setPassword] = useState("");
 
     const location = useLocation();
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
-    const handleSignUp = (event) => {
+    const handleSignUp = async (event) => {
         event.preventDefault();
-
-        const form = event.target;
-        const name = form.name.value;
-        const phone = form.phone.value;
-        const email = form.email.value;
-        const password = form.password.value;
-
-        if (password.length < 6) {
-            setErrorMessage("Password must be 6 characters");
+        signUpUser(userName, phoneNumber, password);
+        if (!errorMessage) {
+            toast.success("Successfully Sign Up");
+            navigate(from, { replace: true });
         } else {
-            setErrorMessage(" ");
+            toast.error(errorMessage);
         }
-
-        const profile = {
-            displayName: name,
-            photoURL: phone,
-        };
-
-        signUpUser(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-
-                toast.success("Successfully Sign Up");
-
-                navigate(from, { replace: true });
-
-                updateUserProfile(profile)
-                    .then(() => {})
-                    .then((error) => {});
-
-                form.reset();
-            })
-            .then((error) => {
-                setSignUpError(error?.message);
-            });
     };
 
     return (
@@ -77,43 +50,33 @@ const SignUp = () => {
                         </Link>
                     </div>
                     <form onSubmit={handleSignUp} className="card-body">
-                        <p className="text-red-500">{signUpError}</p>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text">User Name</span>
                             </label>
                             <input
                                 required
                                 type="text"
-                                name="name"
-                                placeholder="name"
+                                onChange={(e) => setUserName(e.target.value)}
+                                name="userName"
+                                placeholder="user name"
                                 className="input input-bordered"
                             />
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Phone</span>
+                                <span className="label-text">Phone Number</span>
                             </label>
                             <input
                                 required
                                 type="text"
-                                name="phone"
+                                onChange={(e) => setPhoneNumber(e.target.value)}
+                                name="phoneNumber"
                                 placeholder="phone (same number of appoint)"
                                 className="input input-bordered"
                             />
                         </div>
-                        <div className="form-control">
-                            <label className="label">
-                                <span className="label-text">Email</span>
-                            </label>
-                            <input
-                                name="email"
-                                required
-                                type="text"
-                                placeholder="email"
-                                className="input input-bordered"
-                            />
-                        </div>
+
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
@@ -122,12 +85,11 @@ const SignUp = () => {
                                 name="password"
                                 required
                                 type="text"
+                                onChange={(e) => setPassword(e.target.value)}
                                 placeholder="password"
                                 className="input input-bordered"
                             />
-                            <p className="text-white text-xs mt-2">
-                                {errorMessage}
-                            </p>
+
                             <label className="label">
                                 <Link
                                     to=""
