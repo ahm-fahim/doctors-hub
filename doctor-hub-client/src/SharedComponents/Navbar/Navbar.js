@@ -4,7 +4,8 @@ import { MdOutlineManageAccounts } from "react-icons/md";
 import { AuthContext } from "../../context/AuthProvider/AuthProvider";
 
 const Navbar = () => {
-    const { user, signOutUser } = useContext(AuthContext);
+    const { token, user, signOutUser } = useContext(AuthContext);
+    console.log(user);
     const menuItem = (
         <>
             <li className="text-hover mt-5 lg:mt-0 px-2">
@@ -61,7 +62,7 @@ const Navbar = () => {
                 <ul className="menu-horizontal px-1">{menuItem}</ul>
             </div>
             <div className="navbar-end">
-                {user?.uid ? (
+                {token ? (
                     <Link
                         onClick={() => signOutUser()}
                         className="text-gradient"
@@ -84,9 +85,9 @@ const Navbar = () => {
                         className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                     >
                         <li>
-                            <h3 className="text-gradient">
-                                {user?.uid ? (
-                                    user.displayName
+                            {/* <h3 className="text-gradient">
+                                {token ? (
+                                    user.userName
                                 ) : (
                                     <Link
                                         to="/signIn"
@@ -95,7 +96,7 @@ const Navbar = () => {
                                         Sign In
                                     </Link>
                                 )}
-                            </h3>
+                            </h3> */}
                         </li>
                     </ul>
                 </div>

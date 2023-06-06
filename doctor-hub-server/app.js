@@ -26,6 +26,25 @@ const client = new MongoClient(uri, {
     },
 });
 
+// Middleware to authenticate the token
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers["authorization"];
+    const token = authHeader && authHeader.split(" ")[1];
+
+    if (token == null) {
+        return res.sendStatus(401);
+    }
+
+    jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+        if (err) {
+            return res.sendStatus(403);
+        }
+
+        req.user = user;
+        next();
+    });
+}
+
 async function run() {
     try {
         const doctorsCollection = client
@@ -55,18 +74,19 @@ async function run() {
                 // Hash the password
                 const hashedPassword = await bcrypt.hash(password, 10);
 
-                // Create a new user
-                const newUser = new User({
+                // Insert the user into the database
+                const newUser = {
                     userName,
                     phoneNumber,
                     password: hashedPassword,
-                });
-
-                // Save the user to the database
-                await newUser.save();
+                };
+                await usersCollection.insertOne(newUser);
 
                 // Generate a JWT token
-                const token = jwt.sign({ userId: newUser._id }, "secretKey");
+                const token = jwt.sign(
+                    { userId: newUser._id },
+                    process.env.SECRET_KEY
+                );
 
                 // Return the token
                 res.json({ token });
@@ -97,7 +117,10 @@ async function run() {
                 }
 
                 // Generate a JWT token
-                const token = jwt.sign({ userId: user._id }, "secretKey");
+                const token = jwt.sign(
+                    { userId: user._id },
+                    process.env.SECRET_KEY
+                );
 
                 // Return the token
                 res.json({ token });
@@ -118,26 +141,6 @@ async function run() {
             // You can perform any cleanup or handle additional logic here
             res.json({ message: "Logged out successfully" });
         });
-
-        // Middleware to authenticate the token
-        function authenticateToken(req, res, next) {
-            const authHeader = req.headers["authorization"];
-            const token = authHeader && authHeader.split(" ")[1];
-
-            if (token == null) {
-                return res.sendStatus(401);
-            }
-
-            jwt.verify(token, "secretKey", (err, user) => {
-                if (err) {
-                    return res.sendStatus(403);
-                }
-
-                req.user = user;
-                next();
-            });
-        }
-
 
         // get all doctors data
         app.get("/doctors", async (req, res) => {
@@ -208,10 +211,8 @@ async function run() {
         // get booking data for user
         app.get("/bookings", async (req, res) => {
             const phone = req.query.phone;
-            // const date = req.query.date;
             const query = {
                 phone: phone,
-                // appointDate: date,
             };
             const bookings = await bookingCollection.find(query).toArray();
             res.send(bookings);

@@ -12,15 +12,17 @@ const AuthProvider = ({ children }) => {
 
     // create user with email
     const signUpUser = async (userName, phoneNumber, password) => {
-        setLoading(true);
         try {
             const response = await axios.post("http://localhost:5000/signup", {
                 userName,
                 phoneNumber,
                 password,
             });
+            setLoading(true);
             const { token } = response.data;
             setToken(token);
+            localStorage.setItem("Doctors-Hub", token);
+            await getUserData();
         } catch (error) {
             setErrorMessage(error);
         }
@@ -28,14 +30,16 @@ const AuthProvider = ({ children }) => {
 
     // sign in user with email
     const signInUser = async (userName, password) => {
-        setLoading(true);
         try {
             const response = await axios.post("http://localhost:5000/signin", {
                 userName,
                 password,
             });
+            setLoading(true);
             const { token } = response.data;
             setToken(token);
+            localStorage.setItem("Doctors-Hub", token);
+            await getUserData();
         } catch (error) {
             setErrorMessage(error);
         }
@@ -43,28 +47,33 @@ const AuthProvider = ({ children }) => {
 
     // logout User
     const signOutUser = () => {
+        localStorage.removeItem("Doctors-Hub");
         setLoading(true);
         setToken("");
         setUser(null);
     };
 
+    const getUserData = async () => {
+        try {
+            const response = await axios.get("http://localhost:5000/user", {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+
+            setUser(response.data);
+        } catch (error) {
+            console.error("Failed to get user data", error);
+        }
+    };
+
     useEffect(() => {
-        const getUserData = async () => {
-            try {
-                const response = await axios.get("http://localhost:5000/user", {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-
-                setUser(response.data);
-            } catch (error) {
-                console.error("Failed to get user data", error);
-            }
-        };
-
-        return getUserData;
-    }, [token]);
+        const storedToken = localStorage.getItem("Doctors-Hub");
+        if (storedToken) {
+            setToken(storedToken);
+            getUserData();
+        }
+    }, []);
 
     const authInfo = {
         token,

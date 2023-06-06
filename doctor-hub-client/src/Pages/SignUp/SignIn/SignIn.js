@@ -5,7 +5,7 @@ import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../context/AuthProvider/AuthProvider";
 
 const SignIn = () => {
-    const { signInUser, user, errorMessage } = useContext(AuthContext);
+    const { signInUser,  errorMessage } = useContext(AuthContext);
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -18,8 +18,6 @@ const SignIn = () => {
         event.preventDefault();
 
         signInUser(userName, password);
-
-        console.log("user user user user", user);
 
         if (!errorMessage) {
             toast.success("Successfully Sign In");
